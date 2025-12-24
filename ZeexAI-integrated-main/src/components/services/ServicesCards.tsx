@@ -65,7 +65,7 @@ const ServicesCards = () => {
               <div className="card-body5">
                 <div className="card-content5">
                   <p>{service.desc}</p>
-                  <a href="#" className="read-link5">Learn more →</a>
+                  {/* <a href="#" className="read-link5">Learn more →</a> */}
                 </div>
               </div>
 

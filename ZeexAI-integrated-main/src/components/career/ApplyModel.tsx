@@ -81,9 +81,26 @@ export default function ApplyModal({ isOpen, onClose, role }: ApplyModalProps) {
         // Don't set Content-Type header - browser will set it with boundary for FormData
       });
 
+      if (!response.ok) {
+        // Try to parse error response
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { message: `Server error: ${response.status} ${response.statusText}` };
+        }
+        
+        // Handle validation errors
+        const errors = errorData.errors || {};
+        const errorMessages = Object.values(errors).flat() as string[];
+        const errorMessage = errorMessages[0] || errorData.message || `Failed to submit application (${response.status}). Please try again.`;
+        setSubmitError(errorMessage);
+        return;
+      }
+
       const data = await response.json();
 
-      if (response.ok && data.success) {
+      if (data.success) {
         setIsSubmitted(true);
         // Reset form after 2 seconds
         setTimeout(() => {
@@ -103,7 +120,17 @@ export default function ApplyModal({ isOpen, onClose, role }: ApplyModalProps) {
       }
     } catch (error) {
       console.error('Error submitting application:', error);
-      setSubmitError('Network error. Please check your connection and try again.');
+      let errorMessage = 'Network error. ';
+      
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage += 'Cannot connect to the server. Please make sure the backend is running on http://127.0.0.1:8000';
+      } else if (error instanceof Error) {
+        errorMessage += error.message;
+      } else {
+        errorMessage += 'Please check your connection and try again.';
+      }
+      
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }

@@ -9,7 +9,7 @@ import ServicesButton from "../../components/home/ServicesButton";
 import PhasesSection from "../../components/home/PhasesSection";
 import CtaSection from "../../components/common/CtaSection";
 import BlogSection from "../../components/home/BlogSection";
-import PartnerLogos from "../../components/home/PartnerLogos";
+// import PartnerLogos from "../../components/home/PartnerLogos";
 import ViewBlogs from "../../components/home/ViewBlogs";
 
 
@@ -66,14 +66,14 @@ const HomePage: React.FC = () => {
       <ViewBlogs />
       
       {/* SECTION HEADER 3 */}
-      <SectionHeader
+      {/* <SectionHeader
         title="Trusted Partnerships"
         word1="Supported by "
         word2="Industry Leaders"
         description="Our technology is recognized and supported by premier institutions and industry leaders."
-      />
+      /> */}
       {/* PartnerLogos  */}
-      <PartnerLogos />
+      {/* <PartnerLogos /> */}
       
 
     </>

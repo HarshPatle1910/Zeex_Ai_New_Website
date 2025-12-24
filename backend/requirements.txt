@@ -5,3 +5,9 @@ Werkzeug==3.0.1
 python-dotenv==1.0.0
 requests==2.31.0
 
+# Production server (choose one based on your platform)
+# For Linux/Mac:
+gunicorn==21.2.0
+# For Windows (uncomment if needed):
+# waitress==3.0.0
+

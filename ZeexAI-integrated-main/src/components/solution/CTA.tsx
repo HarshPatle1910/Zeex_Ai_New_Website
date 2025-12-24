@@ -1,22 +1,70 @@
 // CTA.tsx
 import React, { useState } from 'react';
-
+import { API_ENDPOINTS } from '../../config/api';
 
 const CTA: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    setSuccess(false);
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log('Demo requested for:', email);
-    setIsSubmitting(false);
-    setEmail('');
-    alert('Thank you! We will contact you shortly.');
+    try {
+      const response = await fetch(API_ENDPOINTS.DEMO_REQUEST, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { error: `Server error: ${response.status} ${response.statusText}` };
+        }
+        const errorMessage = errorData.error || errorData.message || `Failed to submit demo request (${response.status}). Please try again.`;
+        setError(errorMessage);
+        return;
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSuccess(true);
+        setEmail('');
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSuccess(false);
+        }, 5000);
+      } else {
+        setError(data.error || data.message || 'Failed to submit demo request. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting demo request:', error);
+      let errorMessage = 'Network error. ';
+      
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage += 'Cannot connect to the server. Please make sure the backend is running on http://127.0.0.1:8000';
+      } else if (error instanceof Error) {
+        errorMessage += error.message;
+      } else {
+        errorMessage += 'Please check your connection and try again.';
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -50,6 +98,34 @@ const CTA: React.FC = () => {
             </div>
             
             <form className="cta-form" onSubmit={handleSubmit}>
+              {error && (
+                <div className="error-message" style={{ 
+                  color: '#ef4444', 
+                  fontSize: '0.9rem', 
+                  marginBottom: '1rem',
+                  padding: '0.75rem',
+                  background: 'rgba(239, 68, 68, 0.1)',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(239, 68, 68, 0.3)'
+                }}>
+                  {error}
+                </div>
+              )}
+              
+              {success && (
+                <div className="success-message" style={{ 
+                  color: '#10b981', 
+                  fontSize: '0.9rem', 
+                  marginBottom: '1rem',
+                  padding: '0.75rem',
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(16, 185, 129, 0.3)'
+                }}>
+                  Demo request submitted successfully! We will contact you shortly.
+                </div>
+              )}
+              
               <div className="form-group">
                 <input
                   type="email"
@@ -57,6 +133,7 @@ const CTA: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  disabled={isSubmitting}
                   className="email-input"
                 />
                 <div className="input-decoration"></div>

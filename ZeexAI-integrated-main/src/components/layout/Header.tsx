@@ -57,7 +57,7 @@ const Header: React.FC = () => {
           </li>
 
           <li className="nav-item">
-            <NavLink to="/Career" data-text="Career" className="nav-link slide-link">
+            <NavLink to="/Career" data-text="Careers" className="nav-link slide-link">
               <span>Careers</span>
             </NavLink>
           </li>

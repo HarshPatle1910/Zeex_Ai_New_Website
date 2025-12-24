@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS } from '../../config/api';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, Filter, X, LogOut } from 'lucide-react';
 import { roles } from '../../data/roles';
+import { logout } from '../../utils/auth';
 import '../../assets/styles/admin.css';
 
 interface Application {
@@ -16,6 +18,7 @@ interface Application {
 }
 
 export default function ApplicationsAdmin() {
+  const navigate = useNavigate();
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,17 +38,40 @@ export default function ApplicationsAdmin() {
   const fetchApplications = async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await fetch(API_ENDPOINTS.CHECK_DATA);
+
+      if (!response.ok) {
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { message: `Server error: ${response.status} ${response.statusText}` };
+        }
+        setError(errorData.message || `Failed to fetch applications (${response.status})`);
+        return;
+      }
+
       const data = await response.json();
 
       if (data.success) {
-        setApplications(data.data);
+        setApplications(data.data || []);
       } else {
         setError(data.message || 'Failed to fetch applications');
       }
     } catch (err) {
-      setError('Network error. Make sure backend is running.');
       console.error('Error fetching applications:', err);
+      let errorMessage = 'Network error. ';
+      
+      if (err instanceof TypeError && err.message.includes('fetch')) {
+        errorMessage += 'Cannot connect to the server. Please make sure the backend is running on http://127.0.0.1:8000';
+      } else if (err instanceof Error) {
+        errorMessage += err.message;
+      } else {
+        errorMessage += 'Please check your connection and try again.';
+      }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -138,6 +164,11 @@ export default function ApplicationsAdmin() {
 
   const hasActiveFilters = searchQuery || filterPosition || filterExperience || sortBy !== 'newest';
 
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   if (loading) {
     return (
       <div className="admin-container">
@@ -171,6 +202,10 @@ export default function ApplicationsAdmin() {
           <span className="count-badge">
             {filteredApplications.length} of {applications.length} applications
           </span>
+          <button onClick={handleLogout} className="logout-button" title="Logout">
+            <LogOut size={18} />
+            Logout
+          </button>
         </div>
       </div>
 

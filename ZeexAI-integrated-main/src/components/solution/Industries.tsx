@@ -171,23 +171,31 @@ const Industries: React.FC = () => {
                   </div>
 
                   <div className="industry-stats">
-                    {activeIndustryData.stats.map((stat, index) => (
-                      <div key={index} className="stat-card">
-                        <div 
-                          className="stat-value"
-                          style={{ background: activeIndustryData.gradient }}
-                        >
-                          {stat.value}
+                    {activeIndustryData.stats.map((stat, index) => {
+                      const shouldBeWhite = ['Reduction in theft', 'Store protection', 'Alert response'].includes(stat.label);
+                      return (
+                        <div key={index} className="stat-card">
+                          <div 
+                            className="stat-value"
+                            style={shouldBeWhite ? { 
+                              color: 'white',
+                              WebkitTextFillColor: 'white',
+                              background: 'none',
+                              backgroundClip: 'unset'
+                            } : { background: activeIndustryData.gradient }}
+                          >
+                            {stat.value}
+                          </div>
+                          <div className="stat-label">{stat.label}</div>
                         </div>
-                        <div className="stat-label">{stat.label}</div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
-                  <button className="industry-cta">
+                  {/* <button className="industry-cta">
                     Learn More
                     <div className="cta-arrow">→</div>
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="details-visual">

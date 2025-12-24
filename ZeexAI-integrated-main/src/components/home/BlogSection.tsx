@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import img1 from "../../assets/images/card1.png";
 import img2 from "../../assets/images/card2.png";
 import img3 from "../../assets/images/card3.png";
@@ -9,12 +10,12 @@ import img6 from "../../assets/images/card6.png";
 const blogImages = [img1, img2, img3, img4, img5, img6];
 
 const blogLinks = [
-  "https://www.zeexai.com/blog/ai-advancements",
-  "https://www.zeexai.com/blog/privacy-security",
-  "https://www.zeexai.com/blog/facial-recognition",
-  "https://www.zeexai.com/blog/smart-home",
-  "https://www.zeexai.com/blog/future-trends",
-  "https://www.zeexai.com/blog/case-study"
+  "/blog/ai-advancements",
+  "/blog/privacy-security",
+  "/blog/facial-recognition",
+  "/blog/smart-home",
+  "/blog/future-trends",
+  "/blog/case-study"
 ];
 
 const BlogSection: React.FC = () => {
@@ -63,9 +64,9 @@ const BlogSection: React.FC = () => {
               i === 5 ? "Discover emerging trends in AI security technology and how they will shape the..." :
               "An in-depth look at how our AI surveillance solutions reduced theft by 65% for a retail..."}
             </p>
-            <a href={blogLinks[i - 1]} target="_blank" rel="noopener noreferrer" className="read-more">
+            <Link to={blogLinks[i - 1]} className="read-more" style={{ textDecoration: 'none' }}>
               Read more
-            </a>
+            </Link>
 
           </div>
         ))}

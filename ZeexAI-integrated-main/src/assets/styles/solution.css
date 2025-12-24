@@ -555,10 +555,7 @@ input:focus-visible {
 .section-title {
   font-size: 3.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, #a8edea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: white;
   margin-bottom: 20px;
   opacity: 0;
   transform: translateY(30px);
@@ -572,7 +569,7 @@ input:focus-visible {
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #b0b0b0;
+  color: white;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -694,15 +691,11 @@ input:focus-visible {
   font-weight: 700;
   color: white;
   margin-bottom: 20px;
-  background: linear-gradient(135deg, #fff 0%, #667eea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .industry-description {
   font-size: 1.1rem;
-  color: #b0b0b0;
+  color: white;
   line-height: 1.6;
   margin-bottom: 30px;
 }
@@ -719,7 +712,7 @@ input:focus-visible {
   align-items: center;
   gap: 15px;
   padding: 12px 0;
-  color: #d0d0d0;
+  color: white;
 }
 
 .feature-bullet {
@@ -749,7 +742,7 @@ input:focus-visible {
 }
 
 .stat-label {
-  color: #888;
+  color: white;
   font-size: 0.9rem;
   font-weight: 500;
 }

@@ -80,9 +80,23 @@ function ContactUs() {
         }),
       });
 
+      if (!response.ok) {
+        // Try to parse error response
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { error: `Server error: ${response.status} ${response.statusText}` };
+        }
+        const errorMessage = errorData.error || errorData.message || `Failed to send message (${response.status}). Please try again.`;
+        setErrors({ message: errorMessage });
+        alert(errorMessage);
+        return;
+      }
+
       const data = await response.json();
 
-      if (response.ok && data.success) {
+      if (data.success) {
         setShowToast(true);
         setFormData({
           name: '',
@@ -93,13 +107,22 @@ function ContactUs() {
         setErrors({});
       } else {
         // Handle error response
-        const errorMessage = data.error || 'Failed to send message. Please try again.';
+        const errorMessage = data.error || data.message || 'Failed to send message. Please try again.';
         setErrors({ message: errorMessage });
         alert(errorMessage);
       }
     } catch (error) {
       console.error('Error submitting contact form:', error);
-      const errorMessage = 'Network error. Please check your connection and try again.';
+      let errorMessage = 'Network error. ';
+      
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage += 'Cannot connect to the server. Please make sure the backend is running on http://127.0.0.1:8000';
+      } else if (error instanceof Error) {
+        errorMessage += error.message;
+      } else {
+        errorMessage += 'Please check your connection and try again.';
+      }
+      
       setErrors({ message: errorMessage });
       alert(errorMessage);
     } finally {
@@ -200,7 +223,7 @@ function ContactUs() {
               </a>
 
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Nirmaan,+CFI,+IIT+Madras,+Chennai,+India+600036"
+                href="https://maps.app.goo.gl/RbdrotHTqtWSQRuXA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cta-button button-visit"

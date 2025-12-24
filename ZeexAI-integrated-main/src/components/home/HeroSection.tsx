@@ -59,6 +59,7 @@ const Hero = () => {
                 <div className="hero-buttons">
                     <Link to='/contact'><button className="primary">Get a Demo</button></Link>
                     <Link to='/solution'><button className="secondary">Explore Solutions</button></Link>
+                    <Link to='/login'><button className="admin-button">Admin Login</button></Link>
                 </div>
             </div>
 

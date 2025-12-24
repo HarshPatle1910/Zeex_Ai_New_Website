@@ -24,6 +24,8 @@ ZeexAI-integrated-main/*.local
 # Environment variables
 .env
 .env.local
+.env.production
+.env.production.local
 .env.*.local
 
 # Logs

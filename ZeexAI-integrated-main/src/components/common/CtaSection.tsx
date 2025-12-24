@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
  // optional if you separate CSS
 
 interface CtaSectionProps {
@@ -20,9 +21,9 @@ const CtaSection: React.FC<CtaSectionProps> = ({
         <h2 className="cta-title2">{title}</h2>
         <p className="cta-description2">{description}</p>
 
-        <a href={buttonLink} className="cta-button1 cta-link">
+        <Link to={buttonLink} className="cta-button1 cta-link">
           {buttonText}
-        </a>
+        </Link>
       </div>
     </section>
   );

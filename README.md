@@ -1,6 +1,52 @@
-# ZEEX AI Flask Backend
+# Zeex AI Website - Full Stack Application
 
-This is a unified Flask backend combining career and contact modules.
+Complete full-stack website with React/TypeScript frontend and Flask backend.
+
+## 🚀 Quick Start
+
+### Development
+
+**Backend:**
+```bash
+cd backend
+pip install -r requirements.txt
+cp env.template .env
+# Edit .env with your credentials
+python app.py
+```
+
+**Frontend:**
+```bash
+cd ZeexAI-integrated-main
+npm install
+npm run dev
+```
+
+### Production
+
+See [PRODUCTION_DEPLOYMENT.md](./PRODUCTION_DEPLOYMENT.md) for detailed deployment instructions.
+
+**Quick Production Build:**
+
+**Backend:**
+```bash
+cd backend
+# Create .env with production settings
+bash start_production.sh  # Linux/Mac
+# OR
+start_production.bat      # Windows
+```
+
+**Frontend:**
+```bash
+cd ZeexAI-integrated-main
+VITE_API_BASE_URL=https://api.zeexai.com npm run build
+# Deploy dist/ folder
+```
+
+---
+
+## 📁 Project Structure
 
 ## Structure
 
@@ -73,9 +119,38 @@ Handles contact form submissions and sends emails via Resend API.
 
 All configuration is in `config.py`. Key settings:
 - Database: SQLite (configurable via `DATABASE_URL` env var)
-- CORS: Configured for localhost development
+- CORS: Configured via `CORS_ORIGINS` environment variable
 - File uploads: Max 1MB, allowed extensions: pdf, doc, docx
 - Email: Configured via Resend API (requires `.env` file)
+
+## 🔐 Environment Variables
+
+### Backend (.env)
+See `backend/env.template` for all available options.
+
+**Required:**
+- `RESEND_API_KEY` - Resend API key for email
+- `FROM_EMAIL` - Verified email domain
+- `SECRET_KEY` - Strong secret key (generate with: `python -c "import secrets; print(secrets.token_urlsafe(32))"`)
+- `CORS_ORIGINS` - Comma-separated list of allowed frontend URLs
+
+**Optional:**
+- `DEBUG` - Set to `False` for production
+- `FLASK_HOST` - Server host (default: 0.0.0.0)
+- `FLASK_PORT` - Server port (default: 8000)
+- `DATABASE_URL` - Database connection string
+
+### Frontend
+Set `VITE_API_BASE_URL` environment variable before building:
+```bash
+VITE_API_BASE_URL=https://api.zeexai.com npm run build
+```
+
+## 📚 Documentation
+
+- [Production Deployment Guide](./PRODUCTION_DEPLOYMENT.md) - Complete deployment instructions
+- [Deployment Checklist](./DEPLOYMENT_CHECKLIST.md) - Pre-deployment checklist
+- [Network Error Troubleshooting](./NETWORK_ERROR_TROUBLESHOOTING.md) - Troubleshooting guide
 
 
 

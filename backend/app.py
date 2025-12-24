@@ -49,6 +49,7 @@ def create_app(config_class=Config):
             "endpoints": {
                 "health": "/health",
                 "contact": "/contact (POST)",
+                "demo_request": "/demo-request (POST)",
                 "applications": "/api/applications/ (POST)",
                 "check_data": "/api/check-data (GET)",
                 "media": "/media/<filename> (GET)"
@@ -68,6 +69,11 @@ def create_app(config_class=Config):
 
 
 if __name__ == '__main__':
+    import os
     app = create_app()
-    app.run(debug=True, host='127.0.0.1', port=8000)
+    # Get host and port from environment variables for production
+    host = os.environ.get('FLASK_HOST', '127.0.0.1')
+    port = int(os.environ.get('FLASK_PORT', 8000))
+    debug = os.environ.get('DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug, host=host, port=port)
 

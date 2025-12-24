@@ -188,17 +188,25 @@ const TechDeepDive: React.FC = () => {
                   <div className="performance-metrics">
                     <h4>Performance Metrics</h4>
                     <div className="metrics-grid">
-                      {activeFeatureData.performance.map((metric, index) => (
-                        <div key={index} className="metric-card">
-                          <div 
-                            className="metric-value"
-                            style={{ background: activeFeatureData.gradient }}
-                          >
-                            {metric.value}
+                      {activeFeatureData.performance.map((metric, index) => {
+                        const shouldBeWhite = ['Accuracy', 'Processing Speed'].includes(metric.metric);
+                        return (
+                          <div key={index} className="metric-card">
+                            <div 
+                              className="metric-value"
+                              style={shouldBeWhite ? { 
+                                color: 'white',
+                                WebkitTextFillColor: 'white',
+                                background: 'none',
+                                backgroundClip: 'unset'
+                              } : { background: activeFeatureData.gradient }}
+                            >
+                              {metric.value}
+                            </div>
+                            <div className="metric-label">{metric.metric}</div>
                           </div>
-                          <div className="metric-label">{metric.metric}</div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

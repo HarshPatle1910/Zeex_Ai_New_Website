@@ -1,5 +1,6 @@
 // SolutionsGrid.tsx
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 interface Solution {
@@ -15,6 +16,7 @@ interface Solution {
 }
 
 const SolutionsGrid: React.FC = () => {
+  const navigate = useNavigate();
   const [activeSolution, setActiveSolution] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -427,6 +429,7 @@ const SolutionsGrid: React.FC = () => {
                 
                 <button 
                   className="get-started-btn"
+                  onClick={() => navigate('/contact')}
                   style={{ 
                     backgroundColor: solution.accentColor,
                     '--hover-color': solution.accentColor
@@ -501,13 +504,39 @@ const SolutionsGrid: React.FC = () => {
       <p>Manage permissions and access from anywhere with our secure platform.</p>
     </div>
 
+    <div className="benefit-card">
+      <div className="benefit-icon">
+        <img 
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+          alt="Scalability"
+          width="50"
+          height="50"
+        />
+      </div>
+      <h4>Scalable Solutions</h4>
+      <p>Grow your security infrastructure seamlessly as your business expands.</p>
+    </div>
+
+    <div className="benefit-card">
+      <div className="benefit-icon">
+        <img 
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" 
+          alt="Support"
+          width="50"
+          height="50"
+        />
+      </div>
+      <h4>Expert Support</h4>
+      <p>Dedicated support team available 24/7 to assist with any security needs.</p>
+    </div>
+
   </div>
 </div>
 
 <div className={`solutions-cta ${isVisible ? 'animate-in' : ''}`}>
   <h3>Ready to Enhance Your Security?</h3>
   <p>Our team is ready to help you implement the perfect security solution for your needs.</p>
-  <button className="cta-button">
+  <button className="cta-button" onClick={() => navigate('/contact')}>
     Request a Consultation
     <div className="cta-sparkle">✨</div>
   </button>

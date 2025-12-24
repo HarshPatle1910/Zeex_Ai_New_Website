@@ -112,3 +112,92 @@ def contact():
             "error": f"An error occurred: {str(e)}"
         }), 500
 
+
+@contact_bp.route('/demo-request', methods=['POST'])
+def demo_request():
+    """
+    Handle demo request form submission.
+    
+    Expected JSON body:
+    {
+        "email": "string"
+    }
+    
+    Returns:
+        JSON response with success status and message
+    """
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+        
+        # Validate that data exists
+        if not data:
+            return jsonify({
+                "success": False,
+                "error": "No data provided"
+            }), 400
+        
+        # Extract and validate email
+        email = data.get('email', '').strip()
+        
+        # Validate that email is provided
+        if not email:
+            return jsonify({
+                "success": False,
+                "error": "Email is required"
+            }), 400
+        
+        # Basic email format validation
+        if '@' not in email or '.' not in email.split('@')[1]:
+            return jsonify({
+                "success": False,
+                "error": "Invalid email format"
+            }), 400
+        
+        # Send email to admin
+        try:
+            # Create message for admin
+            message_body = f"A demo request has been submitted from the ZeexAI website.\n\n"
+            message_body += f"User Email: {email}\n\n"
+            message_body += f"Please contact this user to schedule a demo."
+            
+            # Send email to admin@zeexai.com
+            send_email(
+                to_email="admin@zeexai.com",
+                subject="New Demo Request - ZeexAI Website",
+                message_body=message_body,
+                sender_name="Demo Request Form"
+            )
+            
+            return jsonify({
+                "success": True,
+                "message": "Demo request submitted successfully. We will contact you shortly."
+            }), 200
+        
+        except ValueError as e:
+            # Email configuration error
+            print(f"ValueError: {str(e)}")
+            print(traceback.format_exc())
+            return jsonify({
+                "success": False,
+                "error": str(e)
+            }), 500
+        
+        except Exception as e:
+            # Email sending error
+            print(f"Email sending error: {str(e)}")
+            print(traceback.format_exc())
+            return jsonify({
+                "success": False,
+                "error": f"Failed to send email: {str(e)}"
+            }), 500
+    
+    except Exception as e:
+        # General error handling
+        print(f"General error: {str(e)}")
+        print(traceback.format_exc())
+        return jsonify({
+            "success": False,
+            "error": f"An error occurred: {str(e)}"
+        }), 500
+

@@ -45,7 +45,7 @@ const SecuritySections: React.FC = () => {
               <li><img src="https://img.icons8.com/ios-filled/100/00d4ff/checkmark.png" alt="check icon" className="tick-icon" /> Custom alert settings</li>
             </ul>
 
-            <button className="cta-button1">Learn More</button>
+            {/* <button className="cta-button1">Learn More</button> */}
           </div>
         </div>
 
@@ -102,7 +102,7 @@ const SecuritySections: React.FC = () => {
               <li><img src="https://img.icons8.com/ios-filled/100/00d4ff/checkmark.png" alt="check icon" className="tick-icon" /> Regulatory compliance</li>
             </ul>
 
-            <button className="cta-button1">Learn More</button>
+            {/* <button className="cta-button1">Learn More</button> */}
           </div>
         </div>
 
@@ -158,7 +158,7 @@ const SecuritySections: React.FC = () => {
               <li><img src="https://img.icons8.com/ios-filled/100/00d4ff/checkmark.png" alt="check icon" className="tick-icon" /> Scalable deployment options</li>
             </ul>
 
-            <button className="cta-button1">Learn More</button>
+            {/* <button className="cta-button1">Learn More</button> */}
           </div>
         </div>
 
@@ -213,7 +213,7 @@ const SecuritySections: React.FC = () => {
               <li><img src="https://img.icons8.com/ios-filled/100/00d4ff/checkmark.png" alt="check icon" className="tick-icon" /> Loss prevention reporting</li>
             </ul>
 
-            <button className="cta-button1">Learn More</button>
+            {/* <button className="cta-button1">Learn More</button> */}
           </div>
         </div>
         <h3 className="use-case-title">How Public Safety Works in Practice</h3>
@@ -267,7 +267,7 @@ const SecuritySections: React.FC = () => {
               <li><img src="https://img.icons8.com/ios-filled/100/00d4ff/checkmark.png" alt="check icon" className="tick-icon" /> 24/7 facility monitoring</li>
             </ul>
 
-            <button className="cta-button1">Learn More</button>
+            {/* <button className="cta-button1">Learn More</button> */}
           </div>
         </div>
         <h3 className="use-case-title">How Industrial Security Works in Practice</h3>
@@ -320,7 +320,7 @@ const SecuritySections: React.FC = () => {
               <li><img src="https://img.icons8.com/ios-filled/100/00d4ff/checkmark.png" alt="check icon" className="tick-icon" /> Traffic pattern analysis</li>
             </ul>
 
-            <button className="cta-button1">Learn More</button>
+            {/* <button className="cta-button1">Learn More</button> */}
           </div>
         </div>
         <h3 className="use-case-title">How Traffic Management Works in Practice</h3>

@@ -59,28 +59,28 @@ const Footer: React.FC = () => {
         {/* Quick Links */}
         <div className="footer-col">
           <h3>Quick Links</h3>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Services</a>
-          <a href="#">Solutions</a>
-          <a href="#">Blog</a>
-          <a href="#">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/About">About Us</Link>
+          <Link to="/Services">Services</Link>
+          <Link to="/Solution">Solutions</Link>
+          <Link to="/Blogs">Blog</Link>
+          <Link to="/Contact">Contact</Link>
         </div>
 
         {/* Services */}
         <div className="footer-col">
           <h3>Our Services</h3>
-          <a href="#">Retail Shop Security</a>
-          <a href="#">Bank Security</a>
-          <a href="#">Industrial Monitoring</a>
-          <a href="#">Smart City Surveillance</a>
+          <Link to="/Services">Retail Shop Security</Link>
+          <Link to="/Services">Bank Security</Link>
+          <Link to="/Services">Industrial Monitoring</Link>
+          <Link to="/Services">Smart City Surveillance</Link>
         </div>
 
         {/* Contact */}
         <div className="footer-col">
           <h3>Contact</h3>
           <p><FontAwesomeIcon icon={faPhone} />  +91 8709221636</p>
-          <p><FontAwesomeIcon icon={faEnvelope} /> admin@zeeexai.com</p>
+          <p><FontAwesomeIcon icon={faEnvelope} /> admin@zeexai.com</p>
           <p><FontAwesomeIcon icon={faLocationDot} /> Nirmaan, CFI, IIT Madras</p>
         </div>
 

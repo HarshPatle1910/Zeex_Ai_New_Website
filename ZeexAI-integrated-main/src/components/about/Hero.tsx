@@ -60,7 +60,6 @@ export default function Hero() {
           style={{
             color: "var(--muted)",
             textAlign: "center",
-            textShadow: "0 0 6px var(--accent), 0 0 12px var(--accent2)",
           }}
         >
           Empowering Vision. Enhancing Safety. Automating Intelligence.
@@ -69,10 +68,7 @@ export default function Hero() {
           className="text-slate-300 leading-relaxed mt-8"
           style={{ textAlign: "center" }}
         >
-          Zeex AI is an advanced AI-powered platform delivering computer vision,
-          CCTV surveillance analytics, and automation solutions — enabling
-          smarter, safer environments through real-time detection and actionable
-          insights.
+          Zeex AI delivers AI-powered computer vision and CCTV surveillance analytics — enabling smarter, safer environments through real-time insights.
         </p>
       </div>
     </section>
