@@ -1,0 +1,250 @@
+
+/* ====================================================== */
+/* Style for privacy page and terms of services page */
+/* ====================================================== */
+
+
+/* ------------------------------ */
+/* TITLE SECTION                  */
+/* ------------------------------ */
+
+.privacy-title-section {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Gradient word 1 */
+.core-word {
+    background: linear-gradient(90deg, #7FD1FF, #A5E1FF);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+/* Gradient word 2 */
+.feature-word {
+    background: linear-gradient(90deg, #4B82FF, #7F9BFF);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+/* Main title */
+.privacy-title {
+    font-size: 50px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* Last updated text */
+.last-updated {
+    margin-top: 12px;
+    font-size: 18px;
+    color: #9EB4DD;
+    font-weight: 500;
+}
+
+
+
+/* ------------------------------ */
+/* PAGE WRAPPER                   */
+/* ------------------------------ */
+
+.policy-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+
+/* ------------------------------ */
+/* CARD GRID (VERTICAL LIST)      */
+/* ------------------------------ */
+
+.policy-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+
+/* ------------------------------ */
+/* PREMIUM CARD DESIGN            */
+/* ------------------------------ */
+
+.policy-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 32px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    transition: all 0.35s ease;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.18);
+}
+
+.policy-card:hover {
+    border-color: #4B82FF;
+    box-shadow: 0 0 30px rgba(75,130,255,0.35);
+    transform: translateY(-6px);
+}
+
+
+
+/* ------------------------------ */
+/* CARD HEADER (ICON + TITLE)     */
+/* ------------------------------ */
+
+.pc-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.pc-head img {
+    width: 40px;
+    height: 40px;
+    color: #7FD1FF;
+    filter: drop-shadow(0 0 6px rgba(127,209,255,0.5));
+}
+
+.pc-title {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #d9e6ff, #ffffff);
+    -webkit-background-clip: text;
+    color: #7FD1FF;
+}
+
+
+
+/* ------------------------------ */
+/* TEXT STYLING                   */
+/* ------------------------------ */
+
+.pc-subtitle {
+    margin: 5px 0 12px;
+    font-size: 16px;
+    color: #AFCBFF;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.pc-para {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #E6EEFF;
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+
+
+/* ------------------------------ */
+/* LISTS — TWO COLUMN DESIGN      */
+/* ------------------------------ */
+
+.pc-list {
+    margin-top: 15px;
+    padding-left: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 25px;
+}
+
+.pc-list li {
+    position: relative;
+    padding-left: 22px;
+    color: #DCE8FF;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Custom glowing bullets */
+.pc-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7FD1FF;
+    box-shadow: 0 0 6px rgba(127, 209, 255, 0.7);
+}
+/* ------------------------------ */
+/* CONTACT BOX — THEME MATCHED    */
+/* ------------------------------ */
+
+.contact-box {
+    background: rgba(255, 255, 255, 0.05);   /* same as card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 28px;
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-box:hover {
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
+}
+
+
+/* Title */
+.cb-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 18px;
+}
+
+
+/* Rows inside box */
+.cb-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.cb-row i {
+    font-size: 20px;
+    color: #4B82FF;   /* theme blue */
+    margin-top: 4px;
+}
+
+.cb-row p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d5def0;   /* your paragraph color */
+}
+
+
+/* EMAIL LINK */
+.cb-mail {
+    font-size: 15px;
+    color: #7FD1FF;   /* your secondary blue */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cb-mail:hover {
+    text-decoration: underline;
+}
+

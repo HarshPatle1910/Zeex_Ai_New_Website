@@ -1,0 +1,329 @@
+/* =========================== */
+/* Style for services page */
+/* =========================== */
+
+
+.custom-card5 {
+  background: #001b33;
+  border: 2px solid #8cd3ff;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 0 rgba(140, 211, 255, 0);
+}
+
+.custom-card5:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 0 25px rgba(140, 211, 255, 0.7);
+}
+
+.custom-card5 img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.custom-card5:hover img {
+  transform: scale(1.08);
+}
+
+.card-title-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 8px 14px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.custom-card5:hover .card-title-overlay {
+  background: rgba(0, 140, 255, 0.7);
+}
+.card-title-overlay i {
+  font-size: 18px;
+  color: #8cd3ff;
+  transition: 0.3s;
+}
+.custom-card5:hover .card-title-overlay i {
+  color: #fff;
+}
+
+.card-body5 {
+  padding: 10px;
+  color: #fff;
+  flex-grow: 1;
+  transition: 0.4s ease;
+  position: relative;
+}
+
+.custom-card5:hover .card-body5 {
+  transform: translateY(-6px);
+}
+.card-content5 {
+  padding: 15px !important; /* space inside the card body */
+}
+
+.card-body5 p {
+  margin-bottom: 8px !important; /* spacing between text and link */
+  font-size: 15px !important;
+}
+
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+.custom-card5:hover .card-title {
+  color: #69c0ff;
+}
+
+.read-link5 {
+  color: #5da8ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.read-link5:hover {
+  color: #8cd3ff;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+/* ======= RESIDENTIAL SECTION ======= */
+
+.residential-section {
+    margin-top: -100px;
+    padding: 70px 8%;
+    color: #fff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Header Line + Icon + Title */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: center;
+    gap: 25px;
+}
+
+.section-header .line {
+    flex: 1;  /* FULL WIDTH LINE */
+    height: 3px;
+    background: #00d4ff;
+    box-shadow: 0 0 12px #00d4ff;
+    border-radius: 10px;
+}
+
+.section-header .section-icon {
+    font-size: 30px;
+    color: #00d4ff;
+    text-shadow: 0 0 12px #00d4ff;
+    width: 32px;          /* icon size */
+    height: 32px;
+    filter: drop-shadow(0 0 8px #00d4ff); /* glow effect */
+    transition: 0.3s ease;
+}
+
+.section-header .section-icon:hover {
+    text-shadow: 0 0 18px #33e1ff;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 15px #33e1ff);
+}
+
+.section-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #00d4ff !important;   /* TITLE COLOR — NO BACKGROUND */
+    text-shadow: 0 0 12px #00d4ff;
+}
+
+/* ======= LAYOUT ======= */
+.residential-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* ======= LEFT IMAGE ======= */
+.residential-image {
+    flex: 1;
+}
+
+.residential-image img {
+    width: 600px; /* IMAGE INCREASED */
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 0 22px rgba(0, 212, 255, 0.45);
+    transition: 0.4s;
+    flex:1;
+    max-width: 100%;
+}
+
+.residential-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.7);
+}
+
+/* ======= RIGHT TEXT ======= */
+.residential-text {
+    flex: 1.4;
+}
+.residential-text p {
+    font-size: 15px; /* INCREASED */
+    color: #d4eef9;
+    line-height: 30px;
+    margin-bottom: 20px;
+    flex:1.2;
+}
+
+.residential-text h3 {
+    font-size: 20px; /* INCREASED */
+    margin-bottom: 15px;
+    color: #00d4ff;
+}
+
+.benefits-list {
+    margin: 20px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.benefits-list li {
+    margin: 10px 0;
+    font-size: 14px; /* INCREASED */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.benefits-list li i {
+    color: #00d4ff;
+    text-shadow: 0 0 8px #00d4ff;
+}
+
+.benefits-list li:hover {
+    transform: translateX(10px);
+    color: #bff4ff;
+}
+
+/* ======= CTA BUTTON ======= */
+.cta-button {
+    margin-top: 20px;
+    padding: 14px 30px; /* BIGGER BUTTON */
+    background: transparent;
+    border: 2px solid #00d4ff;
+    border-radius: 10px;
+    color: #00d4ff;
+    font-size: 18px; /* BIGGER */
+    cursor: pointer;
+    transition: 0.4s;
+    font-weight: 600;
+    box-shadow: 0 0 14px rgba(0, 212, 255, 0.25);
+}
+
+.cta-button:hover {
+    background: #00d4ff;
+    color: #00121d;
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00d4ff;
+}
+
+/* ======= USE CASE CARDS ======= */
+.use-case-title {
+    font-size: 26px;
+    margin: 50px 0 20px;
+    color: #00d4ff;
+    text-align: center;
+}
+.case-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* FULL CENTER */
+    gap: -100px; /* VERY SMALL GAP */
+    margin-bottom: 15px;
+}
+
+.case-header h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Card Style (NEON) */
+.use-card {
+    background: rgba(13, 32, 48, 0.7);
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    text-align: left;
+    transition: 0.35s;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.15);
+    position: relative;
+}
+
+/* NUMBER BADGE */
+.number-badge {
+    width: 48px;
+    height: 48px;
+    background: #00d4ff;
+    color: #00121d;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 22px;
+    box-shadow: 0 0 18px #00d4ff;
+    transition: 0.3s;
+}
+
+.use-card:hover .number-badge {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px #00d4ff;
+}
+
+/* Card Text */
+.use-card h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #00d4ff;
+}
+
+.use-card p {
+    color: #c9dbe5;
+    font-size: 13px;
+}
+
+/* Hover Animation */
+.use-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+    border-color: #00d4ff;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
